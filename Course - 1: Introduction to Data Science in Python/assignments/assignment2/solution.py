@@ -54,4 +54,16 @@ print(average_influenza_doses())
 # {'male':0.2, 'female':0.4}
 
 def chickenpox_by_sex():
-    
+    df=pd.read_csv('assets/NISPUF17.csv')
+    cpo_sex=df[df['P_NUMVRC'].gt(0) & df['HAD_CPOX'].lt(3)].loc[:,['HAD_CPOX','SEX']]
+    cpo1_sex1=len(cpo_sex[(cpo_sex['HAD_CPOX']==1) & (cpo_sex['SEX']==1)])
+    cpo1_sex2=len(cpo_sex[(cpo_sex['HAD_CPOX']==1) & (cpo_sex['SEX']==2)])
+    cpo2_sex1=len(cpo_sex[(cpo_sex['HAD_CPOX']==2) & (cpo_sex['SEX']==1)])
+    cpo2_sex2=len(cpo_sex[(cpo_sex['HAD_CPOX']==2) & (cpo_sex['SEX']==2)])
+
+    cbs={"male":0,
+        "female":0}
+    cbs['male']=round(cpo1_sex1/cpo2_sex1,1)
+    cbs['female']=round(cpo1_sex2/cpo2_sex2,1)
+    return cbs
+print(chickenpox_by_sex())
