@@ -41,8 +41,21 @@ def average_influenza_doses():
     df_bf = df[df['CBF_01'] == 1]
     df_nbf = df[df['CBF_01'] == 2]
     bf = df_bf['P_NUMFLU'].mean()
+    # round it to 1 decimal places
+    bf = round(bf,1)
     nbf = df_nbf['P_NUMFLU'].mean()
+    # round it to 1 decimal places
+    nbf = round(nbf,1)
     return (bf, nbf)
 print(average_influenza_doses())
 
+# Calculate the ratio of the number of children who contracted chickenpox but were
+# vaccinated against it (at least one varicella dose) versus those who were vaccinated
+# but did not contract chicken pox. Return results by sex.
 
+# This function should return a dictionary in the form of (use the correct numbers):
+#     {"male":0.2,
+#     "female":0.4}
+
+def chickenpox_by_sex ():
+    
