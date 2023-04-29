@@ -14,10 +14,18 @@ import re
 def proportion_of_education ():
     df = pd.read_csv('assets/NISPUF17.csv')
     df_edu = df['EDUC1']
-    less_than_high_school = df_edu[df_edu == 1].count()/df_edu.count().
+    less_than_high_school = df_edu[df_edu == 1].count()/df_edu.count()
+    # round it to 2 decimal places
+    less_than_high_school = round(less_than_high_school,2)
     high_school = df_edu[df_edu == 2].count()/df_edu.count()
+    #round it to 2 decimal places
+    high_school = round(high_school,2)
     more_than_high_school = df_edu[df_edu == 3].count()/df_edu.count()
+    #round it to 2 decimal places
+    more_than_high_school = round(more_than_high_school,2)
     college = df_edu[df_edu == 4].count()/df_edu.count()
+    #round it to 2 decimal places
+    college = round(college,2)
     return {"less than high school":less_than_high_school,
             "high school":high_school,
             "more than high school but not college":more_than_high_school,
