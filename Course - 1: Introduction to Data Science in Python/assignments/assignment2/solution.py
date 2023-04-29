@@ -55,4 +55,4 @@ print(average_influenza_doses())
 
 def chickenpox_by_sex ():
     df = pd.read_csv('assets/NISPUF17.csv')
-    
+    male_contracted = df[df[]]
