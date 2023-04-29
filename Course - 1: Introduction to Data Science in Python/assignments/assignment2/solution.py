@@ -53,6 +53,5 @@ print(average_influenza_doses())
 # This function should return a dictionary in the form of (use the correct numbers):
 # {'male':0.2, 'female':0.4}
 
-def chickenpox_by_sex ():
-    df = pd.read_csv('assets/NISPUF17.csv')
-    male_contracted = df[df[]]
+def chickenpox_by_sex():
+    
