@@ -31,3 +31,18 @@ def proportion_of_education ():
             "more than high school but not college":more_than_high_school,
             "college":college}
 print(proportion_of_education())
+
+# Return a tuple of the average number of influenza vaccines for those children we know
+# received breastmilk as a child and those who know did not.
+# This function should return a tuple in the form (use the correct numbers:(2.5, 0.1)
+
+def average_influenza_doses():
+    df = pd.read_csv('assets/NISPUF17.csv')
+    df_bf = df[df['CBF_01'] == 1]
+    df_nbf = df[df['CBF_01'] == 2]
+    bf = df_bf['P_NUMFLU'].mean()
+    nbf = df_nbf['P_NUMFLU'].mean()
+    return (bf, nbf)
+print(average_influenza_doses())
+
+
