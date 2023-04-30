@@ -13,13 +13,4 @@ def g (x, y) :
 
 # Next their derivatives,
 def dfdx (x, y) :
-    return 1/2 * (-4*x + y) * f(x, y)
-
-def dfdy (x, y) :
-    return 1/2 * (x - 2*y) * f(x, y)
-
-def dgdx (x, y) :
-    return 2*x
-
-def dgdy (x, y) :
-    return 6*y+6
+    return np.exp(-(2*x*x + y*y - x*y) / 2) * (2*x - y)
