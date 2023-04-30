@@ -15,7 +15,7 @@ def dfdx (x, y) :
     return np.exp(x-y**2+x*y)*(1+y)*-1
 
 def dfdy (x, y) :
-    return np.exp(x-y**2+x*y)*(-2*y+x)
+    return np.exp(x-y**2+x*y)*(-2*y+x)*-1
 
 def dgdx (x, y) :
     return 1
