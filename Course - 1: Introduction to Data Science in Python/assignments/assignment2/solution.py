@@ -22,7 +22,7 @@ def dgdx (x, y) :
     return 2*x
 
 def dgdy (x, y) :
-    return 6*y+6
+    return 6*(y+1)
 
 
 def DL (xyλ) :
