@@ -5,16 +5,18 @@ import re
 
 
 
-#correlation between having had the chicken pox and the number of chickenpox vaccine doses given (varicella)
+def DL (xyλ) :
+    [x, y, λ] = xyλ
+    return np.array([
+            dfdx(x, y) - λ * dgdx(x, y),
+            dfdy(x, y) - λ * dgdy(x, y),
+            - g(x, y)
+        ])
 
-def average_influenza_doses():
-    df = pd.read_csv('assets/NISPUF17.csv')
-    df_bf = df[df['CBF_01'] == 1]
-    df_nbf = df[df['CBF_01'] == 2]
-    bf = df_bf['P_NUMFLU'].mean()
-    round(bf, 1)
-    nbf = df_nbf['P_NUMFLU'].mean()
-    round(nbf, 1)
-    return (bf, nbf)
-    raise NotImplementedError()
-average_influenza_doses()
+(x0, y0, λ0) = (-1, -1, 0)
+x, y, λ = optimize.root(DL, [x0, y0, λ0]).x
+
+print("x = %g" % x)
+print("y = %g" % y)
+print("λ = %g" % λ)
+print("f(x, y) = %g" % f(x, y))
