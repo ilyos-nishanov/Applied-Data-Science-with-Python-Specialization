@@ -1,6 +1,7 @@
 # Import libraries
 import numpy as np
 from scipy import optimize
+import math
 
 # First we define the functions, YOU SHOULD IMPLEMENT THESE
 def f (x, y) :
