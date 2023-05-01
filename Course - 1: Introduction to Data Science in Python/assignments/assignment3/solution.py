@@ -133,12 +133,15 @@ def answer_eleven():
 answer_eleven()
 
 def answer_twelve():
-    #Cut % Renewable into 5 bins. Group Top15 by the Continent, as well as these new % Renewable bins. How many countries are in each of these groups?
+# Cut % Renewable into 5 bins. Group Top15 by the Continent, as well as these new % Renewable bins. How many countries are in each of these groups?
+# This function should return a Series with a MultiIndex of Continent, then the bins for % Renewable. Do not include groups with no countries.
+
     Top15 = answer_one()
     Top15['% Renewable'] = pd.cut(Top15['% Renewable'],5)
+    Top15['Population'] = Top15['Energy Supply']/Top15['Energy Supply per Capita']
     Top15['Continent'] = Top15.index.to_series().map(ContinentDict)
     Top15 = Top15.reset_index()
     Top15 = Top15.set_index(['Continent','% Renewable'])
-    Top15 = Top15.groupby(level=[0,1])['Country'].agg({'size': np.size})
-    return Top15
+    Top15 = Top15.groupby(level=[0,1])['Population'].agg({'size': np.size})
+    return Top15['size']
 answer_twelve()
