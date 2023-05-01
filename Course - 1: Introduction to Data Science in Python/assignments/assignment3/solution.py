@@ -151,3 +151,8 @@ def answer_thirteen():
     Top15['PopEst'] = Top15['Energy Supply']/Top15['Energy Supply per Capita']
     return Top15['PopEst'].apply(lambda x: "{:,}".format(x))
 answer_thirteen()
+
+def plot_optional():
+
+
+    
