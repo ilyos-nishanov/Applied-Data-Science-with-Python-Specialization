@@ -11,4 +11,8 @@ Energy['Country'] = Energy['Country'].replace({"Republic of Korea": "South Korea
                                                 "United Kingdom of Great Britain and Northern Ireland": "United Kingdom",
                                                 "China, Hong Kong Special Administrative Region": "Hong Kong"
                                                 "Iran (Islamic Republic of)": "Iran"})
-Energy.set_index('Country').loc
+Energy.set_index('Country').loc['United States']
+for i in Energy['Country'].replace({'United States of America' : 'United States',
+                                    'United Kingdom of Great Britain and Northern Ireland':'United Kingdom',
+                                    'China, Hong Kong Special Administrative Region':'Hong Kong'}):
+    print(i)
