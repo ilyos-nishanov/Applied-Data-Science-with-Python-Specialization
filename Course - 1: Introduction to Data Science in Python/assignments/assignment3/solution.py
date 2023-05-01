@@ -117,4 +117,17 @@ def answer_eleven():
                         'Germany':'Europe',
                         'India':'Asia',
                         'France':'Europe',
-                        
+                        'South Korea':'Asia',
+                        'Italy':'Europe',
+                        'Spain':'Europe',
+                        'Iran':'Asia',
+                        'Australia':'Australia',
+                        'Brazil':'South America'}
+    Top15 = answer_one()
+    Top15['Population'] = Top15['Energy Supply']/Top15['Energy Supply per Capita']
+    Top15['Continent'] = Top15.index.to_series().map(ContinentDict)
+    Top15 = Top15.reset_index()
+    Top15 = Top15.set_index('Continent')
+    Top15 = Top15.groupby(level=0)['Population'].agg({'size': np.size, 'sum': np.sum, 'mean': np.mean,'std': np.std})
+    return Top15
+answer_eleven()
