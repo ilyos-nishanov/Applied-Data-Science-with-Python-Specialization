@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-import re
+
+# Filter all warnings. If you would like to see the warnings, please comment the two lines below.
 import warnings
 warnings.filterwarnings('ignore')
 
