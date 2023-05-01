@@ -108,4 +108,13 @@ def answer_ten():
 answer_ten()
 
 def answer_eleven():
-    
+    ContinentDict  = {'China':'Asia',
+                        'United States':'North America',
+                        'Japan':'Asia',
+                        'United Kingdom':'Europe',
+                        'Russian Federation':'Europe',
+                        'Canada':'North America',
+                        'Germany':'Europe',
+                        'India':'Asia',
+                        'France':'Europe',
+                        
