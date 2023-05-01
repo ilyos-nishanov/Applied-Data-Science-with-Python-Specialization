@@ -131,3 +131,14 @@ def answer_eleven():
     Top15 = Top15.groupby(level=0)['Population'].agg({'size': np.size, 'sum': np.sum, 'mean': np.mean,'std': np.std})
     return Top15
 answer_eleven()
+
+def answer_twelve():
+    #Cut % Renewable into 5 bins. Group Top15 by the Continent, as well as these new % Renewable bins. How many countries are in each of these groups?
+    Top15 = answer_one()
+    Top15['% Renewable'] = pd.cut(Top15['% Renewable'],5)
+    Top15['Continent'] = Top15.index.to_series().map(ContinentDict)
+    Top15 = Top15.reset_index()
+    Top15 = Top15.set_index(['Continent','% Renewable'])
+    Top15 = Top15.groupby(level=[0,1])['Country'].agg({'size': np.size})
+    return Top15
+answer_twelve()
