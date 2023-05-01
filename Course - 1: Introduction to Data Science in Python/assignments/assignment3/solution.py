@@ -33,6 +33,7 @@ def answer_two():
     GDP = pd.read_csv('assets/world_bank.csv',skiprows=4)
     GDP['Country Name'] = GDP['Country Name'].replace({"Korea, Rep.": "South Korea","Iran, Islamic Rep.": "Iran","Hong Kong SAR, China": "Hong Kong"})
     GDP = GDP.rename(columns={'Country Name': 'Country'})
+    GDP = GDP.loc[:,['Country','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015']]
     ScimEn = pd.read_excel('assets/scimagojr-3.xlsx')
     df = pd.merge(ScimEn,Energy,how='inner',left_on='Country',right_on='Country')
     inner_join_1 = pd.merge(df,GDP,how='inner',left_on='Country',right_on='Country')
