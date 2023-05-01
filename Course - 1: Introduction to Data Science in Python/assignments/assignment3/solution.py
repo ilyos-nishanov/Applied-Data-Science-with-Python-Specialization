@@ -42,3 +42,9 @@ def answer_two():
     return len(df_outer)-len(df_inner)
 answer_two()
 
+
+def answer_three():
+    Top15 = answer_one()
+    avgGDP = Top15.loc[:,'2006':'2015'].mean(axis=1)
+    avgGDP = avgGDP.sort_values(ascending=False)
+    return avgGDP
