@@ -35,11 +35,10 @@ def answer_two():
     GDP = GDP.rename(columns={'Country Name': 'Country'})
     GDP = GDP.loc[:,['Country','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015']]
     ScimEn = pd.read_excel('assets/scimagojr-3.xlsx')
-    df = pd.merge(ScimEn,Energy,how='inner',left_on='Country',right_on='Country')
-    inner_join_1 = pd.merge(df,GDP,how='inner',left_on='Country',right_on='Country')
-    inner_join_0 = pd.merge(ScimEn,Energy,how='inner',left_on='Country',right_on='Country')
-    outer_join_1 = pd.merge(inner_join_1,inner_join_2,how='outer',left_on='Country',right_on='Country')
-    outer_join_2 = pd.merge(inner_join_2,inner_join_1,how='outer',left_on='Country',right_on='Country')
-    return len(outer_join_1)-len(outer_join_2)
+    df_inner = pd.merge(ScimEn,Energy,how='inner',left_on='Country',right_on='Country')
+    df_inner = pd.merge(df_inner,GDP,how='inner',left_on='Country',right_on='Country')
+    df_outer = pd.merge(ScimEn,Energy,how='outer',left_on='Country',right_on='Country')
+    df_outer = pd.merge(df_outer,GDP,how='outer',left_on='Country',right_on='Country')
+    return len(df_outer)-len(df_inner)
 answer_two()
 
