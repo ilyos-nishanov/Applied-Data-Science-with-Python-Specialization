@@ -91,3 +91,18 @@ def answer_nine():
     return Top15['Citable documents per Capita'].corr(Top15['Energy Supply per Capita'])
 answer_nine()
 
+def answer_ten():
+    #Create a new column with a 1 if the country's % Renewable value is at or above the median for all countries in the top 15, and a 0 if the country's % Renewable value is below the median.
+    Top15 = answer_one()
+    Top15['Median'] = Top15['% Renewable'].median()
+
+    def above_median(row):
+        if row['% Renewable'] >= row['Median']:
+            row['HighRenew'] = 1
+        else:
+            row['HighRenew'] = 0
+        return row
+
+    Top15 = Top15.apply(above_median,axis=1)
+    return Top15['HighRenew']
+answer_ten()
