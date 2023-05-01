@@ -20,6 +20,6 @@ def answer_one():
     df = pd.merge(df,GDP,how='inner',left_on='Country',right_on='Country Name')
     df = df.set_index('Country')
     df = df[['Rank', 'Documents', 'Citable documents', 'Citations', 'Self-citations', 'Citations per document', 'H index','Energy Supply', 'Energy Supply per Capita', '% Renewable', '2006', '2007','2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015']]
-    df = df.sort_values(by='Rank')
+    # df = df.sort_values(by='Rank')
     return df
 answer_one()
