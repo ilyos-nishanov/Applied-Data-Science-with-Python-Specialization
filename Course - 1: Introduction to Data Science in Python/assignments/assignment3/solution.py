@@ -48,3 +48,42 @@ def answer_three():
     avgGDP = Top15.loc[:,'2006':'2015'].mean(axis=1)
     avgGDP = avgGDP.sort_values(ascending=False)
     return avgGDP
+answer_three()
+
+def answer_four():
+    Top15 = answer_one()
+    avgGDP = answer_three()
+    return Top15.loc[avgGDP.index[5],'2015']-Top15.loc[avgGDP.index[5],'2006']
+answer_four()
+
+def answer_five():
+    Top15 = answer_one()
+    return Top15['Energy Supply per Capita'].mean()
+answer_five()
+
+def answer_six():
+    Top15 = answer_one()
+    return Top15.loc[Top15['% Renewable'].idxmax(),'% Renewable']
+answer_six()
+
+def answer_seven():
+    Top15 = answer_one()
+    Top15['Ratio'] = Top15['Self-citations']/Top15['Citations']
+    return Top15.loc[Top15['Ratio'].idxmax(),'Ratio']
+answer_seven()
+
+def answer_eight():
+    Top15 = answer_one()
+    Top15['Population'] = Top15['Energy Supply']/Top15['Energy Supply per Capita']
+    return Top15.loc[Top15['Population'].idxmax(),'Population']
+answer_eight()
+
+def answer_nine():
+    Top15 = answer_one()
+    Top15['Citable documents per Capita'] = Top15['Citable documents']/(Top15['Energy Supply']/Top15['Energy Supply per Capita'])
+    return Top15['Citable documents per Capita'].corr(Top15['Energy Supply per Capita'])
+answer_nine()
+
+def answer_ten():
+    #Create a new column with a 1 if the country's % Renewable value is at or above the median for all countries in the top 15, and a 0 if the country's % Renewable value is below the median.
+    
