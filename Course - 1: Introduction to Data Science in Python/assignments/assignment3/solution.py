@@ -4,7 +4,8 @@ import re
 import warnings
 warnings.filterwarnings('ignore')
 
-Energy = pd.read_excel('assets/Energy Indicators.xls', skiprows=17, skipfooter=38, na_values='...', usecols=[2,3,4,5], names=['Country', 'Energy Supply', 'Energy Supply per Capita', '% Renewable'])
+Energy = pd.read_excel('assets/Energy Indicators.xls',na_values=["..."],header = None,skiprows=18,skipfooter= 38,usecols=[2,3,4,5],names=['Country', 'Energy Supply', 'Energy Supply per Capita', '% Renewable'])
+
 print (Energy.head())
 
 
