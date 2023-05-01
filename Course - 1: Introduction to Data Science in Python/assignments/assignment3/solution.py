@@ -145,3 +145,9 @@ def answer_twelve():
     Top15 = Top15.groupby(level=[0,1])['Population'].agg({'size': np.size})
     return Top15['size']
 answer_twelve()
+
+def answer_thirteen():
+    Top15 = answer_one()
+    Top15['PopEst'] = Top15['Energy Supply']/Top15['Energy Supply per Capita']
+    return Top15['PopEst'].apply(lambda x: "{:,}".format(x))
+answer_thirteen()
