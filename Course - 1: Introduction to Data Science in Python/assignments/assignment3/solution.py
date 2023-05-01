@@ -62,28 +62,32 @@ def answer_five():
 answer_five()
 
 def answer_six():
-    Top15 = answer_one()
-    return Top15.loc[Top15['% Renewable'].idxmax(),'% Renewable']
+    #What country has the maximum % Renewable and what is the percentage?
+    answer = answer_one().sort_values(by='% Renewable',ascending=False).iloc[0]
+    (country, percentage) = (answer.name, answer['% Renewable'])
+    return (country, percentage)
 answer_six()
 
 def answer_seven():
     Top15 = answer_one()
     Top15['Ratio'] = Top15['Self-citations']/Top15['Citations']
-    return Top15.loc[Top15['Ratio'].idxmax(),'Ratio']
+    answer = Top15.sort_values(by='Ratio',ascending=False).iloc[0]
+    (country, ratio) = (answer.name, answer['Ratio'])
+    return (country, ratio)
 answer_seven()
 
 def answer_eight():
     Top15 = answer_one()
     Top15['Population'] = Top15['Energy Supply']/Top15['Energy Supply per Capita']
-    return Top15.loc[Top15['Population'].idxmax(),'Population']
+    answer = Top15.sort_values(by='Population',ascending=False).iloc[2]
+    (country, population) = (answer.name, answer['Population'])
+    return country
 answer_eight()
 
 def answer_nine():
     Top15 = answer_one()
-    Top15['Citable documents per Capita'] = Top15['Citable documents']/(Top15['Energy Supply']/Top15['Energy Supply per Capita'])
+    Top15['Population'] = Top15['Energy Supply']/Top15['Energy Supply per Capita']
+    Top15['Citable documents per Capita'] = Top15['Citable documents']/Top15['Population']
     return Top15['Citable documents per Capita'].corr(Top15['Energy Supply per Capita'])
 answer_nine()
 
-def answer_ten():
-    #Create a new column with a 1 if the country's % Renewable value is at or above the median for all countries in the top 15, and a 0 if the country's % Renewable value is below the median.
-    
